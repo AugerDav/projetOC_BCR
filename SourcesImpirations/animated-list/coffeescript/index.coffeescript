@@ -1,0 +1,106 @@
+# no jQuery, just for "fun". It was no fun at all.
+
+prefix = (->
+  styles = window.getComputedStyle(document.documentElement, "")
+  pre = (Array::slice.call(styles).join("").match(/-(moz|webkit|ms)-/) or (styles.OLink is "" and [
+    ""
+    "o"
+  ]))[1]
+  dom = ("WebKit|Moz|MS|O").match(new RegExp("(" + pre + ")", "i"))[1]
+  dom: dom
+  lowercase: pre
+  css: "-" + pre + "-"
+  js: pre[0].toUpperCase() + pre.substr(1)
+)()
+
+animationEndEvent = prefix.lowercase+"AnimationEnd"
+animationEndEvent = "animationend" if prefix.lowercase is "moz"
+console.log animationEndEvent
+
+window.insertAnimation = (text, list)->
+  items = list.querySelectorAll(".list__item")
+ 
+  for item in list.querySelectorAll(".list__item")
+    item.classList.add("list__item--inserting")
+    item.addEventListener animationEndEvent, (event)->
+      event.target.classList.remove("list__item--inserting")
+  
+  
+  newItem = document.createElement("li")
+  newItem.classList.add "list__item" 
+  newItem.classList.add "list__item--inserting-new"
+  newItem.innerHTML = text
+  closeIcon = document.createElement("i")
+  closeIcon.classList.add "icon-close"
+  newItem.appendChild closeIcon
+  closeIcon.addEventListener "click", itemClickHandler  
+
+  firstItem = items[0]
+  list.insertBefore(newItem, firstItem)
+  newItem.addEventListener animationEndEvent, (event)->
+      event.target.classList.remove("list__item--inserting-new")
+    
+window.removeAnimation = (index, list)->
+  items = list.querySelectorAll(".list__item")
+  item = items.item(index)  
+  item.classList.add("list__item--inserting-removed")
+  postItems = document.querySelectorAll(".list__item:nth-child(1n+#{(index+2)})")
+
+  postCount = 0
+  handler = (event)->
+    event.target.removeEventListener animationEndEvent, arguments.callee
+    postCount++
+    if postCount is postItems.length or postCount > 5
+      list.removeChild(item)
+      for removeItem in postItems
+        removeItem.classList.remove("list__item--removing-sibling")
+        
+        
+  
+  for postItem in postItems
+    postItem.classList.add("list__item--removing-sibling")
+    postItem.addEventListener animationEndEvent, handler
+    
+  if postItems.length is 0
+    item.addEventListener animationEndEvent, -> list.removeChild(item)
+    
+      
+addListItem = ->
+  input = document.querySelectorAll(".list-input").item(0)
+  list = document.querySelectorAll(".list").item(0)
+  
+  todoText = input.value
+  input.value = ""
+  if todoText isnt ""
+    insertAnimation(todoText, list)
+
+    
+removeListItem = (index)->
+  list = document.querySelectorAll(".list").item(0)
+  removeAnimation(index, list)
+  
+input = document.querySelectorAll(".list-input")[0]
+
+input.addEventListener "keyup", (event)->
+  if event.keyCode is 13
+    addListItem()
+
+itemClickHandler = (event)->
+  listItem = event.target.parentNode
+  event.target.removeEventListener "click", arguments.callee
+  itemsNodeList = document.querySelectorAll(".list .list__item")
+  itemsArray = Array.prototype.slice.call(itemsNodeList)
+  index = itemsArray.indexOf(listItem)
+  removeListItem(index)
+  
+for item in document.querySelectorAll(".list .list__item .icon-close")
+  item.addEventListener "click", itemClickHandler
+  
+input.style.marginBottom = String(input.offsetHeight)+"px"
+
+setTimeout ->
+  addListItem()
+, 1000
+
+
+

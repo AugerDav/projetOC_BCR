@@ -1,0 +1,109 @@
+/*
+* Feuille de style de la page utilisateur
+*/
+
+body {
+
+}
+
+.page {
+    background: #64b5f6;
+    padding: 25px 0px;
+}
+
+.userCard {
+    height: 800px;
+    width: 600px;
+    margin: 50px auto;
+    position: relative;
+    display: block;
+
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.2s ease-in-out;
+}
+
+.contentCard {
+    width: 96.5%;
+    height: 97.5%;
+    position: absolute;
+    margin: 10px;
+
+    overflow-y: auto;
+    transition: 0.5s 0.3s cubic-bezier(.55, 0, .1, 1);
+}
+
+.post {
+    height: 200px;
+    margin: 15px auto 0;
+    display: inline-block;
+    padding: 10px 0px;
+    border-radius: 3px;
+
+    background: #eceff1;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: all 0.2s ease-in-out;
+}
+
+/* WARNING: Désactivation du hover parce qu'il est trop gros */
+/* TODO: à retravailler */
+/* .post:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+} */
+
+/* ****** Information de l'utilisateur ****** */
+.mainInfo {
+    width: 95%;
+    height: 250px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.leftPart {
+    flex: 1;
+    border-radius: inherit;
+}
+
+.userPic {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.rightPart {
+    flex: 1;
+    border-radius: inherit;
+}
+
+/* ****** Alarmes de l'utilisateur ****** */
+.secAlarm {
+    width: 95%;
+    display: flex;
+}
+
+.alarmHeader {
+    width: 100%;
+    height: 30px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.alarmTitle {
+    flex: 1;
+    padding: 10px;
+}
+
+.alarmIcon {
+    width: 50px;
+    height: 100%;
+}
+
+/* ****** Historique du sommeil de l'utilisateur ****** */

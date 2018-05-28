@@ -1,0 +1,20 @@
+.container
+  .container__header
+    %h1 Bouncy List
+    
+  .container__description
+    Go on, add or remove items from the list and behold some sweet css animations
+
+  %input.list-input(type="text" placeholder="Add Todo" value="Take out the Trash")
+  %ul.list
+    - initial_notes = ["Buy Milk", "Get Haircut", "Take Dog for a Walk"]
+    - initial_notes.each do |a|
+      %li.list__item
+        #{a}
+        %i.icon-close
+    
+    
+       
+%footer
+  %a(href="https://twitter.com/code_dependant" class="twitter-follow-button" data-show-count="false")Follow @code_dependant
+  %script !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
