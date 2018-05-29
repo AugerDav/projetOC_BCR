@@ -5,6 +5,9 @@
         <title>BCR - Page Utilisateur</title>
 
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
     </head>
     <body>
@@ -42,15 +45,78 @@
                             </div>
                         </div>
 
-                        <div class="alarmList">
+                        <div class="alarmBody">
+                            <div class="alarmList">
+                                <ul>
+                                    <li>
+                                        <div class="alarmInfo">
+                                            <div class="alarmHour">
+                                                <label class="alarmLabelHour">7:30</label>
+                                            </div>
+                                            <div class="alarmDays">
+                                                <label class="alarmLabelDays">L</label>
+                                                <label class="alarmLabelDays">M</label>
+                                                <label class="alarmLabelDays">M</label>
+                                                <label class="alarmLabelDays">J</label>
+                                                <label class="alarmLabelDays">V</label>
+                                                <label class="alarmLabelDays">S</label>
+                                                <label class="alarmLabelDays">D</label>
+                                            </div>
 
-                        </div>
-                    </div>
+                                        </div>
+                                        <div class="alarmAction">
+                                            <span class="togglebutton-box"></span>
+                                            <button class="btn-picto" type="button" aria-label="Delete" title="Delete">
+                                              <i aria-hidden="true" class="material-icons">delete</i>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="alarmInfo">
+                                            <div class="alarmHour">
+                                                <label class="alarmLabelHour">17:30</label>
+                                            </div>
+                                            <div class="alarmDays">
+                                                <label class="alarmLabelDays">L</label>
+                                                <label class="alarmLabelDays">M</label>
+                                                <label class="alarmLabelDays">M</label>
+                                                <label class="alarmLabelDays">J</label>
+                                                <label class="alarmLabelDays">V</label>
+                                                <label class="alarmLabelDays">S</label>
+                                                <label class="alarmLabelDays">D</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="alarmAction">
+                                            <span class="togglebutton-box"></span>
+                                            <button class="btn-picto" type="button" v-on:click="deleteItemFromList(item)" aria-label="Delete" title="Delete">
+                                              <i aria-hidden="true" class="material-icons">delete</i>
+                                            </button>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>      <!-- end alarmList -->
+                        </div>          <!-- end body -->
+
+                        <div class="alarmFooter">
+                            <div class="alarmViewConfig">
+                                <label class="alarmViewTitle">Déplacer les alarmes désactivées en fin de liste</label>
+
+                                <button type="button" class="btn-picto">
+                                    <i aria-hidden="true" class="material-icons">check_box</i>
+                                </button>
+                            </div>
+
+                            <!-- TODO: si on a pas d'alarme : on le montre -->
+                            <!-- <p v-else class="emptylist">Vous n'avez pas encore renseigné d'alarmes</p> -->
+                        </div>          <!-- end footer -->
+                    </div>              <!-- end secAlarm -->
 
                     <!-- <div class="SecSleepHistory">
                     </div> -->
-                </div>
-            </div>
-        </div>
+                </div>                  <!-- end contentCard -->
+            </div>                      <!-- end userCard -->
+        </div>                          <!-- end page -->
     </body>
 </html>
