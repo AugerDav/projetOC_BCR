@@ -1,0 +1,180 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:900,300);
+
+html, body {
+    font-family: 'Lato';
+    text-align: center;
+    background: #FFFAE6;
+    color: #012744;
+    transition: background .2s ease-in, color .2s ease;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+$size: 50vmin;
+$min-size: 220px;
+$border-size: 40px;
+$default-color-1: #1A222F;
+$default-color-2: #008E74;
+$default-color-3: #B2E097;
+$default-color-4: #D24335;
+$default-color-5: #1C3A40;
+$default-colors: $default-color-1 $default-color-2 $default-color-3 $default-color-4 $default-color-5;
+$checkbox-width: 36px;
+
+.circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $size;
+    height: $size;
+    min-height: $min-size;
+    min-width: $min-size;
+    border-radius: 100%;
+    line-height: $size;
+    text-decoration: none;
+    font-family: 'Lato';
+    font-weight: 900;
+    font-size: 35px;
+    color: inherit;
+        
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        border-radius: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        box-shadow:
+            $border-size 0 0 rgba($default-color-1, .5) inset,
+            0 $border-size 0 rgba($default-color-2, .5) inset,
+            (-$border-size) 0 0 rgba($default-color-3, .5) inset,
+            0 (-$border-size) 0 rgba($default-color-4, .5) inset;
+        transition: box-shadow .3s ease;
+    }
+    
+    &:after {
+        transform: rotate(45deg);
+    }
+}
+
+.title {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 48px;
+    text-transform: capitalize;
+}
+
+.color-overview {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    
+    > li {
+        display: inline-block;
+        vertical-align: bottom;
+        width: 20%;
+        height: 25px;
+        transition: background .3s ease-in, height .2s ease;
+        box-shadow: 0 -1px 2px rgba(#000, .2);
+        cursor: pointer;
+        
+        &:hover {
+            height: 40px;
+        }
+    }
+    
+    @for $i from 1 through 5 {
+        > li:nth-child(#{$i}) {
+            background: nth($default-colors, $i);
+        }
+    }
+    
+    &:after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+}
+
+.clipboard-info {
+    opacity: 0;
+    display: inline-block;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $default-color-1;
+    color: #FFFAE6;
+    padding: 4px 8px;
+    border-radius: 4px 4px 0 0;
+}
+
+.checkbox input {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border: 0 none;
+    opacity: 0.001;
+    z-index: 1;
+    vertical-align: top;
+    outline: none;
+    
+    & + .checkbox-box {
+        display: block;
+        width: $checkbox-width;
+        height: 18px;
+        background: #D24335;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        border-radius: 4px;
+        transition: background .3s ease;
+        cursor: pointer;
+        
+        &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            height: 18px;
+            width: 18px;
+            background: #1A222F;
+            border-radius: 4px;
+            transition: right .3s ease;
+            right: $checkbox-width - 18px;
+        }
+    }
+    
+    &:checked + .checkbox-box {
+        background: #B2E097;
+        
+        &:before {
+            right: 0;
+        }
+    }
+}
+
+.checkbox > span {
+    position: absolute;
+    top: 310px;
+}
+.checkbox > .label:first-child {
+    right: 50%;
+    margin-right: 10px;
+    transform: translate(-$checkbox-width / 2);
+}
+.checkbox > .label:last-child {
+    left: 50%;
+    margin-left: 10px;
+    transform: translate($checkbox-width / 2);
+}
