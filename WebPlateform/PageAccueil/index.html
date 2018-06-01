@@ -1,59 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
     <head>
+        <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css"/>
         <title>BCR - Sélection du profil</title>
     </head>
     <body>
+        <script>
+            var tabUsers= [[0, 0000, "David", "Auger", "https://image.flaticon.com/icons/svg/206/206853.svg"],
+                           [1, 0001, "Martin", "Renaud", "https://image.flaticon.com/icons/svg/206/206897.svg"],
+                           [2, 0002, "François", "Bossard", "https://image.flaticon.com/icons/svg/206/206900.svg"],
+                           [3, 0003, "Nathan", "Bourgeois", "https://image.flaticon.com/icons/svg/206/206861.svg"]];
+        </script>
         <div class="wrapper">
         	<h1> Qui dois-je réveiller ?</h1>
         	<div class="profile-wrap">
-                <a href="">
-        		    <div class="profile">
-        			    <div class="profile-icon profile1">
-                            <img src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="user1">
-        			    </div>
-        			    <div class="profile-name">
-        				    Utilisateur 1
-        			    </div>
-
-        		    </div>
-                </a>
-
-                <a href="">
-        		    <div class="profile">
-        			    <div class="profile-icon profile2">
-        	                <img src="https://image.flaticon.com/icons/svg/206/206897.svg" alt="user2">
-        			    </div>
-        		        <div class="profile-name">
-        		            Utilisateur 2
-        		        </div>
-        		    </div>
-                </a>
-
-                <a href="">
-        		    <div class="profile">
-        			    <div class="profile-icon profile3">
-        				    <img src="https://image.flaticon.com/icons/svg/206/206900.svg" alt="user3">
-        			    </div>
-        			    <div class="profile-name">
-        				    Utilisateur 3
-        			    </div>
-        		    </div>
-                </a>
-
-                <a href="">
-        		    <div class="profile">
-        			    <div class="profile-icon profile4">
-                            <img src="https://image.flaticon.com/icons/svg/206/206861.svg" alt="user4">
-        			    </div>
-        			    <div class="profile-name">
-        				    Utilisateur 4
-        			    </div>
-        		    </div>
-                </a>
+                <script>
+                    for(var i = 0; i < tabUsers.length; i++){
+                        var $a = $("<a>").addClass("linkUser").attr("href", "").appendTo(".profile-wrap");
+                        var $divProfile = $('<div>').addClass("profile").appendTo($a);
+                        var $divProfileIcon = $('<div>').addClass("profile-icon").appendTo($divProfile);
+                        var $divProfileName = $('<div>').addClass("profile-name").text(tabUsers[i][2] + " " + tabUsers[i][3]).appendTo($divProfile);
+                        var $img = $('<img>').attr("src", tabUsers[i][4]).appendTo($divProfileIcon);
+                    }
+            </script>
         	</div>
+                <div class="add-wrap">
+                    <script>
+                        var $divAdd = $('<div>').addClass("add").appendTo(".add-wrap");
+                        var $divAddIcon = $('<div>').addClass("add-icon").appendTo($divAdd);
+                        var $divAddName = $('<div>').addClass("add-name").text("Ajouter un utilisateur").appendTo($divAdd);
+                        var $img = $("<i class='material-icons' style='font-size:60px'>person_add</i>").appendTo($divAddIcon);
+                    </script>
+                </div>
         </div>
     </body>
 </html>
