@@ -5,7 +5,6 @@
         <title>BCR - Page Utilisateur</title>
 
         <link rel="stylesheet" type="text/css" href="style.css">
-        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
@@ -43,6 +42,10 @@
                             <div class="alarmTitle">
                                 <label class="alarmLabelTitle">Alarmes configurées :</label>
                             </div>
+
+                            <button class="btn-picto" type="button" aria-label="" title="">
+                              <i aria-hidden="true" class="material-icons">alarm_add</i>
+                            </button>
                         </div>
 
                         <div class="alarmBody">
@@ -65,7 +68,10 @@
 
                                         </div>
                                         <div class="alarmAction">
-                                            <span class="togglebutton-box"></span>
+                                            <button class="btn-picto" type="button" aria-label="" title="">
+                                              <i aria-hidden="true" class="material-icons">alarm_on</i>
+                                            </button>
+                                            
                                             <button class="btn-picto" type="button" aria-label="Delete" title="Delete">
                                               <i aria-hidden="true" class="material-icons">delete</i>
                                             </button>
@@ -88,8 +94,11 @@
 
                                         </div>
                                         <div class="alarmAction">
-                                            <span class="togglebutton-box"></span>
-                                            <button class="btn-picto" type="button" v-on:click="deleteItemFromList(item)" aria-label="Delete" title="Delete">
+                                            <button class="btn-picto" type="button" aria-label="" title="">
+                                              <i aria-hidden="true" class="material-icons">alarm_on</i>
+                                            </button>
+
+                                            <button class="btn-picto" type="button" aria-label="Delete" title="Delete">
                                               <i aria-hidden="true" class="material-icons">delete</i>
                                             </button>
                                         </div>
