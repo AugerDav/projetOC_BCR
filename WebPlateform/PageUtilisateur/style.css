@@ -9,6 +9,7 @@ body {
 .page {
     background: #64b5f6;
     padding: 25px 0px;
+    position: relative;
 }
 
 .userCard {
@@ -181,3 +182,17 @@ li {
 }
 
 /* ****** Historique du sommeil de l'utilisateur ****** */
+
+
+
+
+/* ****** Panel ajout d'alarme ****** */
+.alarmAddPanel {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    z-index: 100;
+    display: none;
+}

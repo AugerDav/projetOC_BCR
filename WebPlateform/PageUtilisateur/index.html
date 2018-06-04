@@ -20,11 +20,17 @@
                     [2, 0002, "François", "Bossard", "https://image.flaticon.com/icons/svg/206/206900.svg"],
                     [3, 0003, "Nathan", "Bourgeois", "https://image.flaticon.com/icons/svg/206/206861.svg"]];
 
-        var tabAlarm = [[],
-                    [],
-                    [],
-                    []];
+        var tabAlarm = [[9, 30, 1, 1, "réveil matin"],
+                    [9, 30, 2, 1, "réveil matin"],
+                    [9, 32, 2, 0, ""],
+                    [10, 30, 3, 0, ""]];
 
+        // ============= Fonctions ==================== //
+        function orderAlarm() {
+
+        }
+
+        // =========================================== //
 
         var $page = $("<div>").addClass("page")
             .appendTo("body");
@@ -99,10 +105,76 @@
             .attr("title", "")
             .appendTo($alarmHeader)
             .on("click", function(){
-                // var $alarmAddPanel = $("<div>").addClass("alarmAddPanel")
-                //     .appendTo($page);
+                $alarmAddPanel.toggle()
 
             });
+        // Panneau d'ajout d'une alarme
+        var $alarmAddPanel = $("<div>").addClass("post alarmAddPanel hide")
+            .appendTo($postSecAlarm);
+
+        var $alarmPanelHeader = $("<div>").addClass("alarmPanelHeader")
+            .appendTo($alarmAddPanel);
+
+        var $alarmPanelTitle = $("<div>").addClass("$alarmPanelTitle")
+            .appendTo($alarmPanelHeader);
+
+        var $alarmPanelTitleLAbel = $("<label>").addClass("alarmPanelLabel")
+            .text("Ajout d'une nouvelle alarme :")
+            .appendTo($alarmPanelTitle);
+
+        var $alarmPanelBody = $("<div>").addClass("alarmPanelHeader")
+            .appendTo($alarmAddPanel);
+
+        // TODO: remplacer par le timepicker
+        var $inputTime = $("<input>").addClass("inputTime")
+            .attr("type", "time")
+            .attr("name", "alarmTime")
+            .appendTo($alarmPanelBody);
+
+        var $divSelectDay = $("<div>").addClass("selectDay")
+            .appendTo($alarmPanelBody);
+
+        var weekDays = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
+
+        for (var i = 0; i < weekDays.length; i++) {
+            $labelDay = $("<label>").addClass("labelDays")
+                .text(weekDays[i])
+                .val(i)
+                .appendTo($divSelectDay)
+                .on("click", function() {
+                    // TODO: faire la focntion de sélection
+                })
+        }
+
+        var $alarmPanelFooter = $("<div>").addClass("alarmPanelFooter")
+            .appendTo($alarmAddPanel);
+
+        var $alarmBtnAction = $("<div>").addClass("alarmBtnAction")
+            .appendTo($alarmPanelFooter);
+
+        var $btnCancel = $("<button>").addClass("btn-picto")
+            .attr("type", "button")
+            .appendTo($alarmBtnAction)
+            .on("click", function() {
+
+            });
+        var $iCancel = $("<i>").addClass("material-icons")
+            .attr("aria-hidden", "true")
+            .text("cancel")
+            .appendTo($btnCancel);
+
+        var $btnSave = $("<button>").addClass("btn-picto")
+            .attr("type", "button")
+            .appendTo($alarmBtnAction)
+            .on("click", function() {
+
+            });
+        var $iSave = $("<i>").addClass("material-icons")
+            .attr("aria-hidden", "true")
+            .text("check")
+            .appendTo($btnSave);
+        // == //
+
 
         var $iBtnAdd = $("<i>").addClass("material-icons")
             .attr("aria-hidden", "true")
