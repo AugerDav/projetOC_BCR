@@ -6,126 +6,169 @@
 
         <link rel="stylesheet" type="text/css" href="style.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+        <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="../jquery/jquery-3.3.1.js"></script>
 
     </head>
+
     <body>
-        <div class='page'>
-            <div class='userCard'>
-                <div class="contentCard">
-                    <div class='post mainInfo'>
-                        <div class="leftPart">
-                            <div class="userPic">
-                                <img src="https://image.flaticon.com/icons/svg/180/180644.svg" alt="Avatar de l'utilisateur">
-                            </div>
-                        </div>
-                        <div class="rightPart">
-                            <div class="userHeader">
-                                <div class="userName">
-                                    <label class="firstName">Pierre</label>
-                                    <label class="lastName">Toutlemonde</label>
-
-                                </div>
-                            </div>
-                            <div class="userBody">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="post secAlarm">
-                        <div class="alarmHeader">
-                            <div class="alarmIcon">
-                                <img src="https://image.flaticon.com/icons/svg/212/212212.svg" alt="Icone alarme">
-                            </div>
-
-                            <div class="alarmTitle">
-                                <label class="alarmLabelTitle">Alarmes configurées :</label>
-                            </div>
-
-                            <button class="btn-picto" type="button" aria-label="" title="">
-                              <i aria-hidden="true" class="material-icons">alarm_add</i>
-                            </button>
-                        </div>
-
-                        <div class="alarmBody">
-                            <div class="alarmList">
-                                <ul>
-                                    <li>
-                                        <div class="alarmInfo">
-                                            <div class="alarmHour">
-                                                <label class="alarmLabelHour">7:30</label>
-                                            </div>
-                                            <div class="alarmDays">
-                                                <label class="alarmLabelDays">L</label>
-                                                <label class="alarmLabelDays">M</label>
-                                                <label class="alarmLabelDays">M</label>
-                                                <label class="alarmLabelDays">J</label>
-                                                <label class="alarmLabelDays">V</label>
-                                                <label class="alarmLabelDays">S</label>
-                                                <label class="alarmLabelDays">D</label>
-                                            </div>
-
-                                        </div>
-                                        <div class="alarmAction">
-                                            <button class="btn-picto" type="button" aria-label="" title="">
-                                              <i aria-hidden="true" class="material-icons">alarm_on</i>
-                                            </button>
-                                            
-                                            <button class="btn-picto" type="button" aria-label="Delete" title="Delete">
-                                              <i aria-hidden="true" class="material-icons">delete</i>
-                                            </button>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="alarmInfo">
-                                            <div class="alarmHour">
-                                                <label class="alarmLabelHour">17:30</label>
-                                            </div>
-                                            <div class="alarmDays">
-                                                <label class="alarmLabelDays">L</label>
-                                                <label class="alarmLabelDays">M</label>
-                                                <label class="alarmLabelDays">M</label>
-                                                <label class="alarmLabelDays">J</label>
-                                                <label class="alarmLabelDays">V</label>
-                                                <label class="alarmLabelDays">S</label>
-                                                <label class="alarmLabelDays">D</label>
-                                            </div>
-
-                                        </div>
-                                        <div class="alarmAction">
-                                            <button class="btn-picto" type="button" aria-label="" title="">
-                                              <i aria-hidden="true" class="material-icons">alarm_on</i>
-                                            </button>
-
-                                            <button class="btn-picto" type="button" aria-label="Delete" title="Delete">
-                                              <i aria-hidden="true" class="material-icons">delete</i>
-                                            </button>
-                                        </div>
-                                    </li>
-                                </ul>
-
-                            </div>      <!-- end alarmList -->
-                        </div>          <!-- end body -->
-
-                        <div class="alarmFooter">
-                            <div class="alarmViewConfig">
-                                <label class="alarmViewTitle">Déplacer les alarmes désactivées en fin de liste</label>
-
-                                <button type="button" class="btn-picto">
-                                    <i aria-hidden="true" class="material-icons">check_box</i>
-                                </button>
-                            </div>
-
-                            <!-- TODO: si on a pas d'alarme : on le montre -->
-                            <!-- <p v-else class="emptylist">Vous n'avez pas encore renseigné d'alarmes</p> -->
-                        </div>          <!-- end footer -->
-                    </div>              <!-- end secAlarm -->
-
-                    <!-- <div class="SecSleepHistory">
-                    </div> -->
-                </div>                  <!-- end contentCard -->
-            </div>                      <!-- end userCard -->
-        </div>                          <!-- end page -->
     </body>
+
+    <script>
+        var tabUsers= [[0, 0000, "David", "Auger", "https://image.flaticon.com/icons/svg/206/206853.svg"],
+                    [1, 0001, "Martin", "Renaud", "https://image.flaticon.com/icons/svg/206/206897.svg"],
+                    [2, 0002, "François", "Bossard", "https://image.flaticon.com/icons/svg/206/206900.svg"],
+                    [3, 0003, "Nathan", "Bourgeois", "https://image.flaticon.com/icons/svg/206/206861.svg"]];
+
+        var tabAlarm = [[],
+                    [],
+                    [],
+                    []];
+
+
+        var $page = $("<div>").addClass("page")
+            .appendTo("body");
+
+        var $userCard = $("<div>").addClass("userCard")
+            .appendTo(".page");
+
+        var $contentCard = $("<div>").addClass("contentCard")
+            .appendTo($userCard);
+
+        // ---------- Sous-enfants de contentCard ----------
+        //Post MainInfo
+        var $postMain = $("<div>").addClass("post mainInfo")
+            .appendTo($contentCard);
+
+        var $leftPart = $("<div>").addClass("leftPart")
+            .appendTo($postMain);
+
+        var $userPic = $("<div>").addClass("userPic")
+            .appendTo($leftPart);
+
+        var $imgUser = $("<img>")
+            .attr("src", "https://image.flaticon.com/icons/svg/180/180644.svg")
+            .attr("alt", "Avatar de l'utilisateur")
+            .appendTo($userPic);
+
+        var $rightPart = $("<div>").addClass("rightPart")
+            .appendTo($postMain);
+
+        var $userHeader = $("<div>").addClass("userHeader")
+            .appendTo($rightPart);
+
+        var $userName = $("<div>").addClass("userName")
+            .appendTo($userHeader);
+
+        var $userFirstName = $("<div>").addClass("firstName")
+            .appendTo($userName);
+
+        var $userLastName = $("<div>").addClass("lastName")
+            .appendTo($userName);
+
+        var $userBody = $("<div>").addClass("userBody")
+            .appendTo($rightPart);
+
+
+        var $postSecAlarm = $("<div>").addClass("post secAlarm")
+            .appendTo($contentCard);
+
+
+        // ====== Alarm Header ======
+        var $alarmHeader = $("<div>").addClass("alarmHeader")
+            .appendTo($postSecAlarm);
+
+        var $alarmIcon = $("<div>").addClass("alarmIcon")
+            .appendTo($alarmHeader);
+
+        var $iconAlarm = $("<img>")
+            .attr("src", "https://image.flaticon.com/icons/svg/212/212212.svg")
+            .attr("alt", "Icone alarme")
+            .appendTo($alarmIcon);
+
+        var $alarmTitle = $("<div>").addClass("alarmTitle")
+            .appendTo($alarmHeader);
+
+        var $alarmLabelTitle = $("<label>").addClass("alarmLabelTitle")
+            .text("Alarmes configurées :")
+            .appendTo($alarmTitle);
+
+        var $btnAddAlarm = $("<button>").addClass("btn-picto")
+            .attr("type", "button")
+            .attr("arial-label", "")
+            .attr("title", "")
+            .appendTo($alarmHeader)
+            .on("click", function(){
+                // var $alarmAddPanel = $("<div>").addClass("alarmAddPanel")
+                //     .appendTo($page);
+
+            });
+
+        var $iBtnAdd = $("<i>").addClass("material-icons")
+            .attr("aria-hidden", "true")
+            .text("alarm_add")
+            .appendTo($btnAddAlarm);
+        // ====== fin header ======
+
+        // ====== Alarm Body ======
+        var $alarmBody = $("<div>").addClass("alarmBody")
+            .appendTo($postSecAlarm);
+
+        var $alarmList = $("<div>").addClass("alarmList")
+            .appendTo($alarmBody);
+
+        var $ulList = $("<ul>").addClass("ulList")
+            .appendTo($alarmList);
+
+        for (var i = 0; i < tabAlarm.length; i++) {
+            var $liAlarm = $("<li>").addClass("liAlarm")
+                .appendTo($ulList);
+
+            // ====== Infos de l'alarme ======
+            var $alarmInfo = $("<div>").addClass("alarmIcon")
+                .appendTo($liAlarm);
+
+            var $alarmHour = $("<div>").addClass("alarmHour")
+                .appendTo($alarmInfo);
+
+            var $labelHour = $("<label>").addClass("alarmLabelHour")
+                .appendTo($alarmHour)
+                .text(tabAlarm[i][0]);
+
+            var $alarmDays = $("<div>").addClass("alarmDays")
+                .appendTo($alarmInfo);
+
+            // ====== fin des infos ======
+
+            // ====== Action sur l'alarme ======
+            var $alarmAction = $("<div>").addClass("alarmAction")
+                .appendTo($liAlarm);
+
+            var $btnOn = $("<button>").addClass("btn-picto")
+                .attr("type", "button")
+                .appendTo($alarmAction)
+                .on("click", function() {
+
+                });
+            var $iAlarmOn = $("<i>").addClass("material-icons")
+                .attr("aria-hidden", "true")
+                .text("alarm_on")
+                .appendTo($btnOn);
+
+            var $btnDelete = $("<button>").addClass("btn-picto")
+                .attr("type", "button")
+                .attr("aria-label", "Delete")
+                .attr("title", "Delete")
+                .appendTo($alarmAction)
+                .on("click", function(){
+
+                });
+            var $iDelete = $("<i>").addClass("material-icons")
+                .attr("aria-hidden", "true")
+                .text("delete")
+                .appendTo($btnDelete);
+            // ====== fin des actions ======
+        }
+
+    </script>
 </html>
