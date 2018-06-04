@@ -53,7 +53,8 @@
             .appendTo($leftPart);
 
         var $imgUser = $("<img>")
-            .attr("src", "https://image.flaticon.com/icons/svg/180/180644.svg")
+            // .attr("src", "https://image.flaticon.com/icons/svg/180/180644.svg")
+            .attr("src", tabUsers[0][4])
             .attr("alt", "Avatar de l'utilisateur")
             .appendTo($userPic);
 
@@ -67,9 +68,11 @@
             .appendTo($userHeader);
 
         var $userFirstName = $("<div>").addClass("firstName")
+            .text(tabUsers[0][2])
             .appendTo($userName);
 
         var $userLastName = $("<div>").addClass("lastName")
+            .text(tabUsers[0][3])
             .appendTo($userName);
 
         var $userBody = $("<div>").addClass("userBody")
