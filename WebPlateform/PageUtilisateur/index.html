@@ -174,7 +174,9 @@
             .attr("type", "button")
             .appendTo($alarmBtnAction)
             .on("click", function() {
-
+                //On annule l'ajout donc on faire juste le panneau sans
+                //sauvegarder quoi que ce soit
+                $alarmAddPanel.toggleClass('hidden');
             });
         var $iCancel = $("<i>").addClass("material-icons")
             .attr("aria-hidden", "true")
@@ -185,7 +187,7 @@
             .attr("type", "button")
             .appendTo($alarmBtnAction)
             .on("click", function() {
-
+                // TODO: faire fonction d'ajout d'alarme
             });
         var $iSave = $("<i>").addClass("material-icons")
             .attr("aria-hidden", "true")
