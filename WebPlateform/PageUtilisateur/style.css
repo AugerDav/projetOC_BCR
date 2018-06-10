@@ -188,11 +188,76 @@ li {
 
 /* ****** Panel ajout d'alarme ****** */
 .alarmAddPanel {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     position: absolute;
-    top: 50px;
+    top: 35px;
     right: 0px;
-    z-index: 100;
+
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+
     display: none;
+}
+
+.alarmAddPanel:before {
+    content:"";
+    position: absolute;
+    top: -15px;
+    right: 2px;
+    border-style: solid;
+    border-width: 0px 15px 15px 0px;
+    border-color: transparent transparent #2d527c transparent;
+}
+
+.alarmAddPanel:after {
+    content:"";
+    position: absolute;
+    top: -15px;
+    right: 17px;
+    border-style: solid;
+    border-width: 15px 15px 0px 0px;
+    border-color: transparent #2d527c transparent transparent;
+}
+
+.alarmPanelHeader {
+    margin: 0px 0px 20px 0px;
+}
+
+.alarmPanelBody {
+
+}
+
+.inputGroup {
+
+}
+
+.popover {
+    display: none;
+    max-width: 276px;
+    padding: 1px;
+    position: absolute;
+    z-index: 1010;
+    text-align: left;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    white-space: normal;
+}
+
+.selectDay {
+
+}
+
+.labelDays {
+
+}
+
+.alarmPanelFooter {
+
 }
