@@ -84,7 +84,33 @@ img {
 
 .rightPart {
     flex: 1;
+    display: flex;
+    flex-direction: column;
     border-radius: inherit;
+}
+
+.userHeader {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.userHeaderTitle {
+
+}
+
+.btnModify {
+    position: absolute;
+    top: -25px;
+    right: -10px;
+    padding: 15px 15px;
+
+    border-radius: 50%;
+    background-color: #ffd54f;
+}
+
+.userBody {
+    flex: 1;
 }
 
 /* ****** Alarmes de l'utilisateur ****** */

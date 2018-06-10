@@ -19,7 +19,7 @@
     </body>
 
     <script>
-        var tabUsers= [[0, 0000, "David", "Auger", "https://image.flaticon.com/icons/svg/206/206853.svg"],
+        var tabUsers= [[0, 0000, "David", "Auger", "https://image.flaticon.com/icons/svg/180/180644.svg"],
                     [1, 0001, "Martin", "Renaud", "https://image.flaticon.com/icons/svg/206/206897.svg"],
                     [2, 0002, "François", "Bossard", "https://image.flaticon.com/icons/svg/206/206900.svg"],
                     [3, 0003, "Nathan", "Bourgeois", "https://image.flaticon.com/icons/svg/206/206861.svg"]];
@@ -66,10 +66,28 @@
             .appendTo($postMain);
 
         var $userHeader = $("<div>").addClass("userHeader")
+            .append(
+                $("<label>").addClass("userHeaderTitle")
+                    .text("Profil de l'utilisateur")
+            )
+            .appendTo($rightPart);
+
+        var $btnModify = $("<div>").addClass("btnModify")
+            .appendTo($userHeader)
+            .append(
+                $("<i>").addClass("material-icons")
+                    .attr("aria-hidden", "true")
+                    .text("mode_edit")
+            )
+            .on("click", function() {
+                // TODO: faire la fonction qui affiche que c'est pour plus tard
+            });
+
+        var $userBody = $("<div>").addClass("userBody")
             .appendTo($rightPart);
 
         var $userName = $("<div>").addClass("userName")
-            .appendTo($userHeader);
+            .appendTo($userBody);
 
         var $userFirstName = $("<div>").addClass("firstName")
             .text(tabUsers[0][2])
@@ -78,10 +96,6 @@
         var $userLastName = $("<div>").addClass("lastName")
             .text(tabUsers[0][3])
             .appendTo($userName);
-
-        var $userBody = $("<div>").addClass("userBody")
-            .appendTo($rightPart);
-
 
         var $postSecAlarm = $("<div>").addClass("post secAlarm")
             .appendTo($contentCard);
