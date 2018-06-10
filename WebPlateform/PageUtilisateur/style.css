@@ -199,6 +199,8 @@ li {
     flex-direction: column;
 
     display: none;
+
+    background: #f1f1f1;
 }
 
 .alarmAddPanel:before {
@@ -208,7 +210,7 @@ li {
     right: 2px;
     border-style: solid;
     border-width: 0px 15px 15px 0px;
-    border-color: transparent transparent #2d527c transparent;
+    border-color: transparent transparent #ccc transparent;
 }
 
 .alarmAddPanel:after {
@@ -218,7 +220,7 @@ li {
     right: 17px;
     border-style: solid;
     border-width: 15px 15px 0px 0px;
-    border-color: transparent #2d527c transparent transparent;
+    border-color: transparent #ccc transparent transparent;
 }
 
 .alarmPanelHeader {
@@ -230,7 +232,64 @@ li {
 }
 
 .inputGroup {
+    width: 125px;
+    display: table;
+    margin-bottom: 10px;
+}
 
+.form-control {
+    height: 25px;
+    display: table-cell;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #2d527c;
+    /* color: #555; */
+    background-color: #fff;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.inputGroupAddon {
+    display: table-cell;
+    padding: 6px 12px;
+    background-color: #eee;
+
+    font-size: 0px;
+    font-weight: 400;
+    line-height: 1;
+    color: #2d527c;
+    text-align: center;
+    vertical-align: middle;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    border-left: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+
+    cursor: pointer;
+}
+
+.glyphicon {
+    display: inline-block;
+    position: relative;
+    top: 1px;
+    font-size: 5px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .popover {
@@ -250,6 +309,27 @@ li {
     white-space: normal;
 }
 
+.arrow {
+    position: absolute;
+    top: -11px
+    left: 25px;
+    margin-left: -11px;
+    display: block;
+    border-top-width: 0;
+    border-bottom-color: #999;
+    border-bottom-color: rgba(0,0,0,.25);
+    border-width: 11px;
+    border-color: transparent;
+    border-style: solid;
+}
+.arrow:after{
+    content: "";
+    top: 1px;
+    margin-left: -10px;
+    border-top-width: 0;
+    border-bottom-color: #fff;
+}
+
 .selectDay {
 
 }
@@ -259,5 +339,5 @@ li {
 }
 
 .alarmPanelFooter {
-
+    float: right;
 }

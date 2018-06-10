@@ -9,7 +9,6 @@
         <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script src="../jquery/jquery-3.3.1.js"></script>
         <!-- <script type="text/javascript" src="https://weareoutman.github.io/clockpicker/assets/js/bootstrap.min.js"></script> -->
-        <script type="text/javascript" src="https://weareoutman.github.io/clockpicker/assets/css/bootstrap.min.css"></script>
         <script type="text/javascript" src="http://weareoutman.github.io/clockpicker/dist/bootstrap-clockpicker.min.js"></script>
         <link rel="stylesheet" type="text/css" href="http://weareoutman.github.io/clockpicker/dist/bootstrap-clockpicker.min.css">
         <!-- <script type="text/javascript" src="http://weareoutman.github.io/clockpicker/assets/js/highlight.min.js"></script> -->
@@ -132,7 +131,6 @@
         var $alarmPanelBody = $("<div>").addClass("alarmPanelBody")
             .appendTo($alarmAddPanel);
 
-        // TODO: remplacer par le clockpicker
         var $divInputGroup = $("<div>").addClass("inputGroup clockpicker")
             .appendTo($alarmPanelBody);
 
@@ -141,13 +139,13 @@
             .attr("value", "09:30")  // TODO: mettre l'heure actuelle
             .attr("name", "alarmTime")
             .appendTo($divInputGroup);
-        // TODO: faire en sorte que le clockpicker marche
+        // TODO: améliorer le CSS du datepicker
         $inputTime.clockpicker({
             autoclose: true
         });
 
         var $spanIconTime = $("<span>").addClass("inputGroupAddon")
-            .append("<span class='glyphicon glyphicon-time'></span>")
+            .append("<span class='glyphicon glyphicon-time'><i class='material-icons' aria-hidden='true'>access_time</i></span>")
             .appendTo($divInputGroup);
 
         var $divSelectDay = $("<div>").addClass("selectDay")
