@@ -112,10 +112,10 @@
             .attr("title", "")
             .appendTo($alarmHeader)
             .on("click", function(){
-                $alarmAddPanel.toggle();
+                $alarmAddPanel.toggleClass('hidden');
             });
         // Panneau d'ajout d'une alarme
-        var $alarmAddPanel = $("<div>").addClass("post alarmAddPanel hide")
+        var $alarmAddPanel = $("<div>").addClass("post alarmAddPanel hidden")
             .appendTo($postSecAlarm);
 
         var $alarmPanelHeader = $("<div>").addClass("alarmPanelHeader")
@@ -160,6 +160,7 @@
                 .appendTo($divSelectDay)
                 .on("click", function() {
                     // TODO: faire la focntion de sélection
+                    console.log(weekDays[i]);
                 })
         }
 
