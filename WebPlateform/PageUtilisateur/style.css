@@ -153,11 +153,32 @@ li {
     flex-direction: row;
     margin: 10px 0px 10px -40px;
     padding: 5px 30px;
-    background: #ADA;
+    background: #fff;
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
 }
 
 .alarmInfo {
     flex: 1;
+    padding: 0px 25px;
+    line-height: 30px;
+    background-color: #fff;
+}
+
+.alarmHour {
+    padding: 0px 5px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #2d527c;
+}
+
+.alarmLabelHour {
+
+}
+
+.selectDayAlarm {
+    border-spacing:
+    border-bottom: 1px solid #ccc;
 }
 
 .alarmAction {

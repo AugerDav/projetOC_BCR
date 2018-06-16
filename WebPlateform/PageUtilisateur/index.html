@@ -231,7 +231,7 @@
                 .appendTo($ulList);
 
             // ====== Infos de l'alarme ======
-            var $alarmInfo = $("<div>").addClass("alarmIcon")
+            var $alarmInfo = $("<div>").addClass("alarmInfo")
                 .appendTo($liAlarm);
 
             var $alarmHour = $("<div>").addClass("alarmHour")
@@ -239,11 +239,23 @@
 
             var $labelHour = $("<label>").addClass("alarmLabelHour")
                 .appendTo($alarmHour)
-                .text(tabAlarm[i][0]);
+                .text(tabAlarm[i][0] + ":" + tabAlarm[i][1]);
 
             var $alarmDays = $("<div>").addClass("alarmDays")
                 .appendTo($alarmInfo);
 
+            //On ajoute les jours qui sont sélectionnés pour l'alarme
+            for (var d = 0; d < weekDays.length; d++) {
+                $labelDay = $("<label>").addClass("labelDays")
+                    .text(weekDays[d])
+                    .val(i)
+                    .appendTo($alarmDays);
+
+                //On régarde si le jour est sélectionné ou non
+                if (tabAlarm[i][2] == d) {
+                    $labelDay.addClass("selectDayAlarm");
+                }
+            }
             // ====== fin des infos ======
 
             // ====== Action sur l'alarme ======
@@ -268,6 +280,9 @@
                 .appendTo($alarmAction)
                 .on("click", function(){
                     // TODO: faire la fonction de suppression de l'alarme
+                    //On supprime du tableau jquery
+
+                    //Ajax pour supprimer l'alarme de la BDD
                 });
             var $iDelete = $("<i>").addClass("material-icons")
                 .attr("aria-hidden", "true")
