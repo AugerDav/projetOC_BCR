@@ -150,12 +150,13 @@
 
         var $inputTime = $("<input>").addClass("inputTime form-control")
             .attr("type", "text")
-            .attr("value", "09:30")  // TODO: mettre l'heure actuelle
+            .attr("value", new Date().getHours() + ":" + new Date().getMinutes())
             .attr("name", "alarmTime")
             .appendTo($divInputGroup);
         // TODO: améliorer le CSS du datepicker
         $inputTime.clockpicker({
-            autoclose: true
+            autoclose: true,
+            donetext: 'Done'
         });
 
         var $spanIconTime = $("<span>").addClass("inputGroupAddon")
