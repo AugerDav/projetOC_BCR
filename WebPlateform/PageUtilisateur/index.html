@@ -175,8 +175,7 @@
                 .val(i)
                 .appendTo($divSelectDay)
                 .on("click", function() {
-                    // TODO: faire la focntion de sélection
-                    console.log(weekDays[i]);
+                    $(this).addClass("daySelected");
                 })
         }
 
