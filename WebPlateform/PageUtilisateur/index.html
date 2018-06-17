@@ -33,6 +33,76 @@
             // TODO: faire la fonction de tri des alarmes du tableau pour les afficher
         }
 
+        //Fonction permettant de dessiner la liste des alarmes
+        function refetchAlarm() {
+            for (var i = 0; i < tabAlarm.length; i++) {
+                var $liAlarm = $("<li>").addClass("liAlarm")
+                    .appendTo($ulList);
+
+                // ====== Infos de l'alarme ======
+                var $alarmInfo = $("<div>").addClass("alarmInfo")
+                    .appendTo($liAlarm);
+
+                var $alarmHour = $("<div>").addClass("alarmHour")
+                    .appendTo($alarmInfo);
+
+                var $labelHour = $("<label>").addClass("alarmLabelHour")
+                    .appendTo($alarmHour)
+                    .text(tabAlarm[i][0] + ":" + tabAlarm[i][1]);
+
+                var $alarmDays = $("<div>").addClass("alarmDays")
+                    .appendTo($alarmInfo);
+
+                //On ajoute les jours qui sont sélectionnés pour l'alarme
+                for (var d = 0; d < weekDays.length; d++) {
+                    $labelDay = $("<label>").addClass("labelDays")
+                    .text(weekDays[d])
+                    .val(i)
+                    .appendTo($alarmDays);
+
+                    //On régarde si le jour est sélectionné ou non
+                    for (var j = 0; j < tabAlarm[i][2].length; j++) {
+                        if (tabAlarm[i][2][j] == d) {
+                            $labelDay.addClass("selectDayAlarm");
+                        }
+                    }
+                }
+                // ====== fin des infos ======
+
+                // ====== Action sur l'alarme ======
+                var $alarmAction = $("<div>").addClass("alarmAction")
+                .appendTo($liAlarm);
+
+                var $btnOn = $("<button>").addClass("btn-picto")
+                .attr("type", "button")
+                .appendTo($alarmAction)
+                .on("click", function() {
+                    // TODO: fonction permettant d'activer ou désactivé l'alarme
+                });
+                var $iAlarmOn = $("<i>").addClass("material-icons")
+                .attr("aria-hidden", "true")
+                .text("alarm_on")
+                .appendTo($btnOn);
+
+                var $btnDelete = $("<button>").addClass("btn-picto")
+                    .attr("type", "button")
+                    .attr("aria-label", "Delete")
+                    .attr("title", "Delete")
+                    .appendTo($alarmAction)
+                    .on("click", function(){
+                        // TODO: faire la fonction de suppression de l'alarme
+                        //On supprime du tableau jquery
+
+                        //Ajax pour supprimer l'alarme de la BDD
+                    });
+                var $iDelete = $("<i>").addClass("material-icons")
+                    .attr("aria-hidden", "true")
+                    .text("delete")
+                    .appendTo($btnDelete);
+                    // ====== fin des actions ======
+            }
+        }
+
         // =========================================== //
 
         var $page = $("<div>").addClass("page")
@@ -179,6 +249,8 @@
                 })
         }
 
+        // TODO: gérer le message de l'alarme
+
         var $alarmPanelFooter = $("<div>").addClass("alarmPanelFooter")
             .appendTo($alarmAddPanel);
 
@@ -203,6 +275,21 @@
             .appendTo($alarmBtnAction)
             .on("click", function() {
                 // TODO: faire fonction d'ajout d'alarme
+                //On récupère les données sélectionnées
+                var $hour = $inputTime.val();
+                var $tabDaysSelected = [];
+
+                $.each($divSelectDay.find(".daySelected"), function(index, value) {
+                    $tabDaysSelected.push(value.value);
+                });
+                //On crée le tableau a insérer dans le tableau de tableau d'alarmes
+                var $newAlarm = [$hour.split(":")[0], $hour.split(":")[1], $tabDaysSelected, 1, "message"];
+                tabAlarm.push($newAlarm);
+
+                //On appelle la fonction qui permet de dessiné les alarmes
+                refetchAlarm();
+
+                //ajax pour la D1 mini:
             });
         var $iSave = $("<i>").addClass("material-icons")
             .attr("aria-hidden", "true")
@@ -227,72 +314,7 @@
         var $ulList = $("<ul>").addClass("ulList")
             .appendTo($alarmList);
 
-        for (var i = 0; i < tabAlarm.length; i++) {
-            var $liAlarm = $("<li>").addClass("liAlarm")
-                .appendTo($ulList);
-
-            // ====== Infos de l'alarme ======
-            var $alarmInfo = $("<div>").addClass("alarmInfo")
-                .appendTo($liAlarm);
-
-            var $alarmHour = $("<div>").addClass("alarmHour")
-                .appendTo($alarmInfo);
-
-            var $labelHour = $("<label>").addClass("alarmLabelHour")
-                .appendTo($alarmHour)
-                .text(tabAlarm[i][0] + ":" + tabAlarm[i][1]);
-
-            var $alarmDays = $("<div>").addClass("alarmDays")
-                .appendTo($alarmInfo);
-
-            //On ajoute les jours qui sont sélectionnés pour l'alarme
-            for (var d = 0; d < weekDays.length; d++) {
-                $labelDay = $("<label>").addClass("labelDays")
-                    .text(weekDays[d])
-                    .val(i)
-                    .appendTo($alarmDays);
-
-                //On régarde si le jour est sélectionné ou non
-                for (var j = 0; j < tabAlarm[i][2].length; j++) {
-                    if (tabAlarm[i][2][j] == d) {
-                        $labelDay.addClass("selectDayAlarm");
-                    }
-                }
-            }
-            // ====== fin des infos ======
-
-            // ====== Action sur l'alarme ======
-            var $alarmAction = $("<div>").addClass("alarmAction")
-                .appendTo($liAlarm);
-
-            var $btnOn = $("<button>").addClass("btn-picto")
-                .attr("type", "button")
-                .appendTo($alarmAction)
-                .on("click", function() {
-                    // TODO: fonction permettant d'activer ou désactivé l'alarme
-                });
-            var $iAlarmOn = $("<i>").addClass("material-icons")
-                .attr("aria-hidden", "true")
-                .text("alarm_on")
-                .appendTo($btnOn);
-
-            var $btnDelete = $("<button>").addClass("btn-picto")
-                .attr("type", "button")
-                .attr("aria-label", "Delete")
-                .attr("title", "Delete")
-                .appendTo($alarmAction)
-                .on("click", function(){
-                    // TODO: faire la fonction de suppression de l'alarme
-                    //On supprime du tableau jquery
-
-                    //Ajax pour supprimer l'alarme de la BDD
-                });
-            var $iDelete = $("<i>").addClass("material-icons")
-                .attr("aria-hidden", "true")
-                .text("delete")
-                .appendTo($btnDelete);
-            // ====== fin des actions ======
-        }
+        fetchAlarm();
 
     </script>
 </html>
