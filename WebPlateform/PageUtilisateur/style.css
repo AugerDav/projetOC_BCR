@@ -107,6 +107,7 @@ img {
 
     border-radius: 50%;
     background-color: #ffd54f;
+    cursor: pointer;
 }
 
 .userBody {
@@ -304,6 +305,8 @@ li {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 
+    cursor: pointer;
+
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
@@ -385,6 +388,7 @@ li {
 
 .labelDays {
     margin: 0px 5px;
+    cursor: pointer;
 }
 
 .alarmPanelFooter {
