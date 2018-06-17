@@ -97,7 +97,7 @@
                         // TODO: faire la fonction de suppression de l'alarme
                         //On supprime du tableau jquery
 
-                        //Ajax pour supprimer l'alarme de la BDD
+                        //Ajax pour supprimer l'alarme de la BDD (D1 mini)
                     });
                 var $iDelete = $("<i>").addClass("material-icons")
                     .attr("aria-hidden", "true")
@@ -153,7 +153,6 @@
                     .text("mode_edit")
             )
             .on("click", function() {
-                // TODO: faire la fonction qui affiche que c'est pour plus tard
                 //Provisoir:
                 alert("Cette fonctionnalité viendra par la suite du développement ! Désolé !");
             });
@@ -228,7 +227,6 @@
             .attr("value", new Date().getHours() + ":" + new Date().getMinutes())
             .attr("name", "alarmTime")
             .appendTo($divInputGroup);
-        // TODO: améliorer le CSS du datepicker
         $inputTime.clockpicker({
             autoclose: true,
             donetext: 'Done'
@@ -278,7 +276,6 @@
             .attr("type", "button")
             .appendTo($alarmBtnAction)
             .on("click", function() {
-                // TODO: faire fonction d'ajout d'alarme
                 //On récupère les données sélectionnées
                 var $hour = $inputTime.val();
                 var $tabDaysSelected = [];
