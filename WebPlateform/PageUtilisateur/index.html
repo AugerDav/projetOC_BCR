@@ -252,8 +252,10 @@
                     .appendTo($alarmDays);
 
                 //On régarde si le jour est sélectionné ou non
-                if (tabAlarm[i][2] == d) {
-                    $labelDay.addClass("selectDayAlarm");
+                for (var j = 0; j < tabAlarm[i][2].length; j++) {
+                    if (tabAlarm[i][2][j] == d) {
+                        $labelDay.addClass("selectDayAlarm");
+                    }
                 }
             }
             // ====== fin des infos ======
