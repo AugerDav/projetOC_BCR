@@ -35,6 +35,10 @@
 
         //Fonction permettant de dessiner la liste des alarmes
         function refetchAlarm() {
+            //on commence par effacer l'ensemble du contenu
+            $ulList.empty();
+
+            //Affichage des alarmes
             for (var i = 0; i < tabAlarm.length; i++) {
                 var $liAlarm = $("<li>").addClass("liAlarm")
                     .appendTo($ulList);
@@ -288,6 +292,7 @@
 
                 //On appelle la fonction qui permet de dessiné les alarmes
                 refetchAlarm();
+                $alarmAddPanel.toggleClass('hidden');   // TODO: améliorer le principe !!
 
                 //ajax pour la D1 mini:
             });
@@ -314,7 +319,7 @@
         var $ulList = $("<ul>").addClass("ulList")
             .appendTo($alarmList);
 
-        fetchAlarm();
+        refetchAlarm();
 
     </script>
 </html>
