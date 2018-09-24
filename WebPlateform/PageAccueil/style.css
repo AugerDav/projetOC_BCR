@@ -5,7 +5,7 @@ body {
   color: #6D6D6D;
   opacity: 0;
   animation: fade-in 500ms ease 200ms 1 forwards;
-  background: url(../Images/fond_page_accueil2.jpg) no-repeat center fixed;
+  background: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-571647.jpg) no-repeat center fixed;
  -webkit-background-size: cover;
  background-size: cover;
 }
