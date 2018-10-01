@@ -27,14 +27,20 @@
                     }
             </script>
         	</div>
-                <div class="add-wrap">
-                    <script>
-                        var $divAdd = $('<div>').addClass("add").appendTo(".add-wrap");
-                        var $divAddIcon = $('<div>').addClass("add-icon").appendTo($divAdd);
-                        var $divAddName = $('<div>').addClass("add-name").text("Ajouter un utilisateur").appendTo($divAdd);
-                        var $img = $("<i class='material-icons' style='font-size:60px'>person_add</i>").appendTo($divAddIcon);
-                    </script>
-                </div>
+            <div class="add-wrap">
+                <script>
+                    var $divAdd = $('<div>').addClass("add").appendTo(".add-wrap").on("click", function(){
+                        $($panel).show();
+                        });
+                    var $divAddIcon = $('<div>').addClass("add-icon").appendTo($divAdd);
+                    var $divAddName = $('<div>').addClass("add-name").text("Ajouter un utilisateur").appendTo($divAdd);
+                    var $img = $("<i class='material-icons' style='font-size:60px'>person_add</i>").appendTo($divAddIcon);
+                    var $panel = $('<div>').addClass("panel").appendTo(".wrapper");
+                    var $cancelImg = $('<img>').attr("src", "https://image.flaticon.com/icons/svg/148/148766.svg").addClass("cancel-icon").appendTo($panel).on("click", function(){
+                        $($panel).hide();
+                        });
+                </script>
+            </div>
         </div>
     </body>
 </html>
