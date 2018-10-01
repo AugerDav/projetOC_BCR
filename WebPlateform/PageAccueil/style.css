@@ -5,11 +5,8 @@ body {
   color: #6D6D6D;
   opacity: 0;
   animation: fade-in 500ms ease 200ms 1 forwards;
-<<<<<<< HEAD
   background: url(https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-571647.jpg) no-repeat center fixed;
-=======
-  background: url(http://wallpapers.wallhalla.com/WA6pBvZNHQko_8aTN8bW_15469af0/aHR0cHM6Ly9hbHBoYS53YWxsaGF2ZW4uY2Mvd2FsbHBhcGVyLzU3MjIxMw==) no-repeat center fixed;
->>>>>>> 2002ab0dc46315d9205fcb4b8041ddfb6466e694
+  /* background: url(http://wallpapers.wallhalla.com/WA6pBvZNHQko_8aTN8bW_15469af0/aHR0cHM6Ly9hbHBoYS53YWxsaGF2ZW4uY2Mvd2FsbHBhcGVyLzU3MjIxMw==) no-repeat center fixed; */
  -webkit-background-size: cover;
  background-size: cover;
 }
@@ -58,6 +55,7 @@ body a {
   width: 150px;
   margin-left: auto;
   margin-right: auto;
+  cursor: pointer;
 }
 
 .profile-wrap {
@@ -90,6 +88,7 @@ body a {
     width: 40px;
     margin: 15px;
     float: right;
+    cursor: pointer;
 }
 
 .profile-name {
